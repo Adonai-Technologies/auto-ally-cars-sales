@@ -44,7 +44,7 @@ const cars = [
     model: "SE",
     year: 2016,
     mileage: 56789,
-    category: "Coupe",
+    category: "SUV",
     price: 230000,
     image: carCoupe,
     specs: {
