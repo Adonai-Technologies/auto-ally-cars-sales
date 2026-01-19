@@ -12,7 +12,7 @@ const Footer = () => {
                 Auto Ally
               </span>
               <span className="text-2xl font-display font-light text-foreground">
-                Gh
+                Ltd
               </span>
             </a>
             <p className="text-muted-foreground mb-6">

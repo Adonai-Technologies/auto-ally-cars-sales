@@ -23,7 +23,7 @@ const Navbar = () => {
               Auto Ally
             </span>
             <span className="text-2xl font-display font-light text-foreground">
-              Gh
+              Ltd
             </span>
           </a>
 
