@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Fuel, Gauge, Settings2, Calendar, Car, Gauge as Speedometer } from "lucide-react";
 import carSuv from "@/assets/car-suv.jpeg";
 import carSedan from "@/assets/car-sedan.jpeg";
-import carCoupe from "@/assets/car-coupe.jpg";
+import carCoupe from "@/assets/car-coupe.jpeg";
 
 const cars = [
   {
@@ -39,18 +39,18 @@ const cars = [
   },
   {
     id: 3,
-    name: "Gran Coupe",
-    make: "Luxe",
-    model: "GT Edition",
-    year: 2024,
-    mileage: 520,
+    name: "Ford",
+    make: "Escape",
+    model: "SE",
+    year: 2016,
+    mileage: 56789,
     category: "Coupe",
-    price: 156000,
+    price: 230000,
     image: carCoupe,
     specs: {
       fuel: "Petrol",
-      power: "620 HP",
-      transmission: "9-Speed Auto",
+      power: "250 HP",
+      transmission: "6-Speed Auto",
     },
   },
 ];
@@ -146,7 +146,7 @@ const InventorySection = () => {
         {/* View All Button */}
         <div className="text-center mt-12">
           <Button variant="heroOutline" size="lg">
-            View All Inventory
+            Call Us now
             <ArrowRight className="h-5 w-5" />
           </Button>
         </div>

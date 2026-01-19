@@ -43,7 +43,7 @@ const ServicesSection = () => {
             Our Services
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
-            Why Choose <span className="text-gradient-gold">Luxe Motors</span>
+            Why Choose <span className="text-gradient-gold">Auto Ally</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             We provide comprehensive services to ensure your car buying experience is seamless and enjoyable.
