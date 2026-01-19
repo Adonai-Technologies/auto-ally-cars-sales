@@ -1,40 +1,40 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Fuel, Gauge, Settings2, Calendar, Car, Gauge as Speedometer } from "lucide-react";
-import carSuv from "@/assets/car-suv.jpg";
-import carSedan from "@/assets/car-sedan.jpg";
+import carSuv from "@/assets/car-suv.jpeg";
+import carSedan from "@/assets/car-sedan.jpeg";
 import carCoupe from "@/assets/car-coupe.jpg";
 
 const cars = [
   {
     id: 1,
-    name: "Navigator X7",
-    make: "Luxe",
-    model: "X7 Premium",
-    year: 2024,
-    mileage: 1250,
-    category: "SUV",
-    price: 89500,
+    name: "Elantra",
+    make: "hyundai",
+    model: "Tucson",
+    year: 2016,
+    mileage: 45230,
+    category: "sedan",
+    price: 115000,
     image: carSuv,
     specs: {
-      fuel: "Hybrid",
-      power: "450 HP",
-      transmission: "8-Speed Auto",
+      fuel: "Petrol",
+      power: "145 HP",
+      transmission: "6-Speed Auto",
     },
   },
   {
     id: 2,
-    name: "Velocita RS",
-    make: "Luxe",
-    model: "RS Sport",
-    year: 2023,
-    mileage: 8420,
-    category: "Sports Sedan",
-    price: 124900,
+    name: "Highlander",
+    make: "Toyota",
+    model: "4wd",
+    year: 2012,
+    mileage: 67890,
+    category: "SUV",
+    price: 175000,
     image: carSedan,
     specs: {
       fuel: "Petrol",
-      power: "580 HP",
-      transmission: "7-Speed DCT",
+      power: "187 HP",
+      transmission: "6-Speed Auto",
     },
   },
   {
@@ -59,6 +59,7 @@ const InventorySection = () => {
   return (
     <section id="inventory" className="py-24 bg-gradient-dark">
       <div className="container mx-auto px-4">
+        
         {/* Header */}
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 bg-gold/10 border border-gold/30 rounded-full text-gold text-sm font-medium mb-4">
@@ -129,11 +130,11 @@ const InventorySection = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="text-2xl font-display font-bold text-gradient-gold">
-                      ${car.price.toLocaleString()}
+                      {car.price.toLocaleString()}
                     </span>
                   </div>
                   <Button variant="premium" size="sm" className="group/btn">
-                    View Details
+                    Negotiable
                     <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
                   </Button>
                 </div>
@@ -149,6 +150,7 @@ const InventorySection = () => {
             <ArrowRight className="h-5 w-5" />
           </Button>
         </div>
+     
       </div>
     </section>
   );

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import heroCar from "@/assets/hero-car.jpg";
 
-const HeroSection = () => {
+const HeroSection = () => { 
   return (
     <section
       id="home"

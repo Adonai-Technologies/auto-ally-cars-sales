@@ -18,7 +18,7 @@ const ContactSection = () => {
               <span className="block text-gradient-gold">Perfect Car?</span>
             </h2>
             <p className="text-muted-foreground mb-8">
-              Visit our showroom or contact us today. Our team of experts is ready to help you find the vehicle of your dreams.
+              Location or contact us today. Our team of experts is ready to help you find the vehicle of your dreams.
             </p>
 
             <div className="space-y-6">
@@ -27,18 +27,18 @@ const ContactSection = () => {
                   <MapPin className="h-5 w-5 text-gold" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground mb-1">Visit Our Showroom</h4>
-                  <p className="text-muted-foreground">123 Luxury Lane, Beverly Hills, CA 90210</p>
+                  <h4 className="font-semibold text-foreground mb-1">Location</h4>
+                  <p className="text-muted-foreground">https://maps.app.goo.gl/qZFj5xiJbBQ4nVHf9</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-4"> 
                 <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Phone className="h-5 w-5 text-gold" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Call Us</h4>
-                  <p className="text-muted-foreground">(123) 456-7890</p>
+                  <p className="text-muted-foreground">(+233) 027 718-4474</p>
                 </div>
               </div>
 
@@ -48,7 +48,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Email Us</h4>
-                  <p className="text-muted-foreground">info@luxemotors.com</p>
+                  <p className="text-muted-foreground">workssuprememotor@gmail.com</p>
                 </div>
               </div>
 
@@ -98,7 +98,7 @@ const ContactSection = () => {
                 <label className="text-sm text-muted-foreground mb-2 block">Phone</label>
                 <Input 
                   type="tel" 
-                  placeholder="(123) 456-7890" 
+                  placeholder="(+233) 027 718-4474" 
                   className="bg-background border-border focus:border-gold focus:ring-gold"
                 />
               </div>

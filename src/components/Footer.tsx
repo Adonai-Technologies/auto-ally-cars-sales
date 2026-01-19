@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer id="about" className="bg-charcoal border-t border-border">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12"> 
           {/* Brand */}
           <div className="lg:col-span-1">
             <a href="#home" className="flex items-center gap-2 mb-4">
@@ -74,7 +74,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2024 Auto Ally Gh. All rights reserved.
+            © 2026 Auto Ally Gh. All rights reserved.
           </p>
           <p className="text-muted-foreground text-sm">
             Crafted with passion for automotive excellence
