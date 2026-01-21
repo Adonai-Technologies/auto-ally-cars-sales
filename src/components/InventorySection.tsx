@@ -1,15 +1,26 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Fuel, Gauge, Settings2 } from "lucide-react";
+import {
+  ArrowRight,
+  Fuel,
+  Gauge,
+  Settings2,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 import carSuv from "@/assets/car-suv.jpeg";
 import carSedan from "@/assets/car-sedan.jpeg";
 import carCoupe from "@/assets/car-coupe.jpeg";
 import carNissan from "@/assets/car-nissan.png";
 import carPrado from "@/assets/car-prado.png";
+import carElantra from "@/assets/car-elantra1.jpeg";
+import carElantra2 from "@/assets/car-elantra2.jpeg";
+
 
 /**
- * 👉 TO ADD MORE CARS:
- * Copy any object inside this array and edit it
+ * 👉 TO ADD MORE IMAGES TO A CAR:
+ * Just add more images inside the `images` array
  */
 const cars = [
   {
@@ -21,7 +32,7 @@ const cars = [
     mileage: 45230,
     category: "Sedan",
     price: 115000,
-    image: carSedan,
+    images: [carElantra, carElantra2],
     specs: {
       fuel: "Petrol",
       power: "145 HP",
@@ -37,7 +48,7 @@ const cars = [
     mileage: 67890,
     category: "SUV",
     price: 175000,
-    image: carSuv,
+    images: [carSuv, carSedan],
     specs: {
       fuel: "Petrol",
       power: "187 HP",
@@ -53,25 +64,23 @@ const cars = [
     mileage: 56789,
     category: "SUV",
     price: 230000,
-    image: carCoupe,
+    images: [carCoupe, carSuv],
     specs: {
       fuel: "Petrol",
       power: "250 HP",
       transmission: "6-Speed Auto",
     },
   },
-
-  // ✅ DUPLICATED CARS (EDIT OR ADD MORE BELOW)
   {
     id: 4,
     name: "Nissan Versa",
-    make: "Versa",
+    make: "Nissan",
     model: "SE",
     year: 2015,
     mileage: 53000,
-    category: "saloon",
+    category: "Saloon",
     price: 75000,
-    image: carNissan,
+    images: [carNissan, carSedan],
     specs: {
       fuel: "Petrol",
       power: "181 HP",
@@ -87,7 +96,7 @@ const cars = [
     mileage: 120000,
     category: "SUV",
     price: 261000,
-    image: carPrado,
+    images: [carPrado, carSuv, carCoupe],
     specs: {
       fuel: "Petrol",
       power: "185 HP",
@@ -96,9 +105,27 @@ const cars = [
   },
 ];
 
-const PHONE_NUMBER = "+233277184474"; // 👈 CHANGE TO YOUR REAL NUMBER
+const PHONE_NUMBER = "+233277184474";
 
 const InventorySection = () => {
+  // 🔹 Track current image index per car
+  const [activeImage, setActiveImage] = useState<Record<number, number>>({});
+
+  const nextImage = (carId: number, length: number) => {
+    setActiveImage((prev) => ({
+      ...prev,
+      [carId]: ((prev[carId] ?? 0) + 1) % length,
+    }));
+  };
+
+  const prevImage = (carId: number, length: number) => {
+    setActiveImage((prev) => ({
+      ...prev,
+      [carId]:
+        ((prev[carId] ?? 0) - 1 + length) % length,
+    }));
+  };
+
   return (
     <section id="inventory" className="py-24 bg-gradient-dark">
       <div className="container mx-auto px-4">
@@ -113,96 +140,98 @@ const InventorySection = () => {
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Browse our handpicked selection of premium automobiles.
-            Each vehicle meets our standards for quality and performance.
           </p>
         </div>
 
         {/* Car Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {cars.map((car, index) => (
-            <div
-              key={car.id}
-              className="group bg-gradient-card rounded-2xl overflow-hidden border border-border hover:border-gold/50 transition-all duration-500 shadow-card"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {/* Image */}
-              <div className="relative h-56 overflow-hidden">
-                <img
-                  src={car.image}
-                  alt={car.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute top-4 left-4 px-3 py-1 bg-gold/90 text-primary-foreground text-xs font-semibold rounded-full">
-                  {car.category}
+          {cars.map((car) => {
+            const currentIndex = activeImage[car.id] ?? 0;
+
+            return (
+              <div
+                key={car.id}
+                className="bg-gradient-card rounded-2xl overflow-hidden border border-border hover:border-gold/50 transition shadow-card"
+              >
+                {/* Image Carousel */}
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={car.images[currentIndex]}
+                    alt={car.name}
+                    className="w-full h-full object-cover transition duration-700"
+                  />
+
+                  {/* Category */}
+                  <div className="absolute top-4 left-4 px-3 py-1 bg-gold/90 text-primary-foreground text-xs font-semibold rounded-full">
+                    {car.category}
+                  </div>
+
+                  {/* Carousel Controls */}
+                  {car.images.length > 1 && (
+                    <>
+                      <button
+                        onClick={() => prevImage(car.id, car.images.length)}
+                        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70"
+                      >
+                        <ChevronLeft size={18} />
+                      </button>
+
+                      <button
+                        onClick={() => nextImage(car.id, car.images.length)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70"
+                      >
+                        <ChevronRight size={18} />
+                      </button>
+                    </>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <div className="text-sm text-muted-foreground mb-1">
+                    {car.year} • {car.make} • {car.model}
+                  </div>
+
+                  <h3 className="text-xl font-display font-bold mb-2">
+                    {car.name}
+                  </h3>
+
+                  <div className="text-sm text-muted-foreground mb-4">
+                    {car.mileage.toLocaleString()} miles
+                  </div>
+
+                  {/* Specs */}
+                  <div className="grid grid-cols-3 gap-4 py-4 border-y border-border mb-4">
+                    <Spec icon={<Fuel />} label={car.specs.fuel} />
+                    <Spec icon={<Gauge />} label={car.specs.power} />
+                    <Spec icon={<Settings2 />} label={car.specs.transmission} />
+                  </div>
+
+                  {/* Price */}
+                  <div className="flex justify-between items-center">
+                    <span className="text-2xl font-bold text-gradient-gold">
+                      ₵{car.price.toLocaleString()}
+                    </span>
+
+                    <a href={`tel:${PHONE_NUMBER}`}>
+                      <Button variant="premium" size="sm">
+                        Call Now
+                        <ArrowRight className="h-4 w-4 ml-1" />
+                      </Button>
+                    </a>
+                  </div>
                 </div>
               </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <div className="flex items-center gap-2 text-muted-foreground text-sm mb-1">
-                  <span>{car.year}</span>
-                  <span>•</span>
-                  <span>{car.make}</span>
-                  <span>•</span>
-                  <span>{car.model}</span>
-                </div>
-
-                <h3 className="text-xl font-display font-bold text-foreground mb-2">
-                  {car.name}
-                </h3>
-
-                <div className="text-sm text-muted-foreground mb-4">
-                  {car.mileage.toLocaleString()} miles
-                </div>
-
-                {/* Specs */}
-                <div className="grid grid-cols-3 gap-4 py-4 border-y border-border mb-4">
-                  <div className="flex flex-col items-center text-center">
-                    <Fuel className="h-4 w-4 text-gold mb-1" />
-                    <span className="text-xs text-muted-foreground">
-                      {car.specs.fuel}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-col items-center text-center">
-                    <Gauge className="h-4 w-4 text-gold mb-1" />
-                    <span className="text-xs text-muted-foreground">
-                      {car.specs.power}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-col items-center text-center">
-                    <Settings2 className="h-4 w-4 text-gold mb-1" />
-                    <span className="text-xs text-muted-foreground">
-                      {car.specs.transmission}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Price & CTA */}
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-display font-bold text-gradient-gold">
-                    ₵{car.price.toLocaleString()}
-                  </span>
-
-                  <a href={`tel:${PHONE_NUMBER}`}>
-                    <Button variant="premium" size="sm" className="group/btn">
-                      Call Now
-                      <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </Button>
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* Call Us Button */}
+        {/* Global CTA */}
         <div className="text-center mt-12">
           <a href={`tel:${PHONE_NUMBER}`}>
             <Button variant="heroOutline" size="lg">
               Call Us Now
-              <ArrowRight className="h-5 w-5" />
+              <ArrowRight className="h-5 w-5 ml-2" />
             </Button>
           </a>
         </div>
@@ -211,5 +240,13 @@ const InventorySection = () => {
     </section>
   );
 };
+
+/* 🔹 Small reusable spec component */
+const Spec = ({ icon, label }: { icon: JSX.Element; label: string }) => (
+  <div className="flex flex-col items-center text-center text-xs text-muted-foreground">
+    <span className="text-gold mb-1">{icon}</span>
+    {label}
+  </div>
+);
 
 export default InventorySection;
