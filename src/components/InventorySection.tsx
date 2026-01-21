@@ -1,20 +1,27 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Fuel, Gauge, Settings2, Calendar, Car, Gauge as Speedometer } from "lucide-react";
+import { ArrowRight, Fuel, Gauge, Settings2 } from "lucide-react";
+
 import carSuv from "@/assets/car-suv.jpeg";
 import carSedan from "@/assets/car-sedan.jpeg";
 import carCoupe from "@/assets/car-coupe.jpeg";
+import carNissan from "@/assets/car-nissan.png";
+import carPrado from "@/assets/car-prado.png";
 
+/**
+ * 👉 TO ADD MORE CARS:
+ * Copy any object inside this array and edit it
+ */
 const cars = [
   {
     id: 1,
-    name: "Elantra",
-    make: "hyundai",
-    model: "Tucson",
+    name: "Hyundai Elantra",
+    make: "Hyundai",
+    model: "GLS",
     year: 2016,
     mileage: 45230,
-    category: "sedan",
+    category: "Sedan",
     price: 115000,
-    image: carSuv,
+    image: carSedan,
     specs: {
       fuel: "Petrol",
       power: "145 HP",
@@ -23,14 +30,14 @@ const cars = [
   },
   {
     id: 2,
-    name: "Highlander",
+    name: "Toyota Highlander",
     make: "Toyota",
-    model: "4wd",
+    model: "4WD",
     year: 2012,
     mileage: 67890,
     category: "SUV",
     price: 175000,
-    image: carSedan,
+    image: carSuv,
     specs: {
       fuel: "Petrol",
       power: "187 HP",
@@ -39,8 +46,8 @@ const cars = [
   },
   {
     id: 3,
-    name: "Ford",
-    make: "Escape",
+    name: "Ford Escape",
+    make: "Ford",
     model: "SE",
     year: 2016,
     mileage: 56789,
@@ -53,13 +60,49 @@ const cars = [
       transmission: "6-Speed Auto",
     },
   },
+
+  // ✅ DUPLICATED CARS (EDIT OR ADD MORE BELOW)
+  {
+    id: 4,
+    name: "Nissan Versa",
+    make: "Versa",
+    model: "SE",
+    year: 2015,
+    mileage: 53000,
+    category: "saloon",
+    price: 75000,
+    image: carNissan,
+    specs: {
+      fuel: "Petrol",
+      power: "181 HP",
+      transmission: "6-Speed Auto",
+    },
+  },
+  {
+    id: 5,
+    name: "Toyota Prado",
+    make: "Toyota",
+    model: "TXL",
+    year: 2012,
+    mileage: 120000,
+    category: "SUV",
+    price: 261000,
+    image: carPrado,
+    specs: {
+      fuel: "Petrol",
+      power: "185 HP",
+      transmission: "CVT Auto",
+    },
+  },
 ];
+
+const PHONE_NUMBER = "+233277184474"; // 👈 CHANGE TO YOUR REAL NUMBER
 
 const InventorySection = () => {
   return (
     <section id="inventory" className="py-24 bg-gradient-dark">
       <div className="container mx-auto px-4">
-        
+
         {/* Header */}
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 bg-gold/10 border border-gold/30 rounded-full text-gold text-sm font-medium mb-4">
@@ -69,8 +112,8 @@ const InventorySection = () => {
             Exceptional <span className="text-gradient-gold">Vehicles</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Browse our handpicked selection of premium automobiles. 
-            Each vehicle meets our rigorous standards for quality and performance.
+            Browse our handpicked selection of premium automobiles.
+            Each vehicle meets our standards for quality and performance.
           </p>
         </div>
 
@@ -103,54 +146,67 @@ const InventorySection = () => {
                   <span>•</span>
                   <span>{car.model}</span>
                 </div>
+
                 <h3 className="text-xl font-display font-bold text-foreground mb-2">
                   {car.name}
                 </h3>
+
                 <div className="text-sm text-muted-foreground mb-4">
                   {car.mileage.toLocaleString()} miles
                 </div>
-                
+
                 {/* Specs */}
                 <div className="grid grid-cols-3 gap-4 py-4 border-y border-border mb-4">
                   <div className="flex flex-col items-center text-center">
                     <Fuel className="h-4 w-4 text-gold mb-1" />
-                    <span className="text-xs text-muted-foreground">{car.specs.fuel}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {car.specs.fuel}
+                    </span>
                   </div>
+
                   <div className="flex flex-col items-center text-center">
                     <Gauge className="h-4 w-4 text-gold mb-1" />
-                    <span className="text-xs text-muted-foreground">{car.specs.power}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {car.specs.power}
+                    </span>
                   </div>
+
                   <div className="flex flex-col items-center text-center">
                     <Settings2 className="h-4 w-4 text-gold mb-1" />
-                    <span className="text-xs text-muted-foreground">{car.specs.transmission}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {car.specs.transmission}
+                    </span>
                   </div>
                 </div>
 
                 {/* Price & CTA */}
                 <div className="flex items-center justify-between">
-                  <div>
-                    <span className="text-2xl font-display font-bold text-gradient-gold">
-                      {car.price.toLocaleString()}
-                    </span>
-                  </div>
-                  <Button variant="premium" size="sm" className="group/btn">
-                    Negotiable
-                    <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Button>
+                  <span className="text-2xl font-display font-bold text-gradient-gold">
+                    ₵{car.price.toLocaleString()}
+                  </span>
+
+                  <a href={`tel:${PHONE_NUMBER}`}>
+                    <Button variant="premium" size="sm" className="group/btn">
+                      Call Now
+                      <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* View All Button */}
+        {/* Call Us Button */}
         <div className="text-center mt-12">
-          <Button variant="heroOutline" size="lg">
-            Call Us now
-            <ArrowRight className="h-5 w-5" />
-          </Button>
+          <a href={`tel:${PHONE_NUMBER}`}>
+            <Button variant="heroOutline" size="lg">
+              Call Us Now
+              <ArrowRight className="h-5 w-5" />
+            </Button>
+          </a>
         </div>
-     
+
       </div>
     </section>
   );
