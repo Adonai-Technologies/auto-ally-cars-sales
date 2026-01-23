@@ -37,10 +37,12 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
+            
             <Button variant="hero" size="xl" className="group">
               Explore Inventory
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
+            
             <Button variant="heroOutline" size="xl" className="group">
               <Play className="h-5 w-5" />
               Watch Video

@@ -9,10 +9,10 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <a href="#home" className="flex items-center gap-2 mb-4">
               <span className="text-2xl font-display font-bold text-gradient-gold">
-                Auto Ally
+                BuyMyGhCar
               </span>
               <span className="text-2xl font-display font-light text-foreground">
-                Ltd
+                .com
               </span>
             </a>
             <p className="text-muted-foreground mb-6">
@@ -74,7 +74,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2026 Auto Ally Gh. All rights reserved.
+            © 2026 BuyMyGhCar.com All rights reserved.
           </p>
           <p className="text-muted-foreground text-sm">
             Crafted with passion for automotive excellence

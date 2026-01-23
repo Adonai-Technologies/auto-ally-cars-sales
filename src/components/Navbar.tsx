@@ -2,6 +2,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 
+
+
+
+const PHONE_NUMBER = "+233277184474";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,10 +24,10 @@ const Navbar = () => {
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2">
             <span className="text-2xl font-display font-bold text-gradient-gold">
-              Auto Ally
+              BuyMyGhCar
             </span>
             <span className="text-2xl font-display font-light text-foreground">
-              Ltd
+              .com
             </span>
           </a>
 
@@ -46,9 +50,11 @@ const Navbar = () => {
               <Phone className="h-4 w-4" />
               <span className="font-medium">(+233) 027 718-4474</span>
             </a>
+            <a href={`tel:${PHONE_NUMBER}`}>
             <Button variant="hero" size="lg">
               Book Test Drive
             </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
