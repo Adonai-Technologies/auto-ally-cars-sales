@@ -78,7 +78,7 @@ const cars = [
     model: "GLS",
     year: 2016,
     mileage: 45230,
-    category: "Sedan",
+    category: "SOLD",
     price: 115000,
     images: [carElantra, carElantra2, carElantra3, carElantra5, carElantra6, carElantra8, carElantra9],
     specs: {
