@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
@@ -7,8 +8,13 @@ import {
   Settings2,
   ChevronLeft,
   ChevronRight,
+  MessageCircle,
+  Share2,
 } from "lucide-react";
 
+/* =======================
+   IMAGE IMPORTS (UNCHANGED)
+======================= */
 import carSuv from "@/assets/car-suv.jpeg";
 import carSedan from "@/assets/car-sedan.jpeg";
 import carCoupe from "@/assets/car-coupe.jpeg";
@@ -40,13 +46,13 @@ import carFord5 from "@/assets/car-ford5.jpeg";
 import carFord6 from "@/assets/car-ford6.jpeg";
 import carFord7 from "@/assets/car-ford7.jpeg";
 import carNissan1 from "@/assets/car-nissan1.jpeg";
-import carNissan2 from "@/assets/car-nissan2.jpeg"
-import carNissan3 from "@/assets/car-nissan3.jpeg"
-import carNissan4 from "@/assets/car-nissan4.jpeg"
-import carNissan5 from "@/assets/car-nissan5.jpeg"
-import carNissan6 from "@/assets/car-nissan6.jpeg"
-import carNissan7 from "@/assets/car-nissan7.jpeg"
-import carNissan8 from "@/assets/car-nissan8.jpeg"
+import carNissan2 from "@/assets/car-nissan2.jpeg";
+import carNissan3 from "@/assets/car-nissan3.jpeg";
+import carNissan4 from "@/assets/car-nissan4.jpeg";
+import carNissan5 from "@/assets/car-nissan5.jpeg";
+import carNissan6 from "@/assets/car-nissan6.jpeg";
+import carNissan7 from "@/assets/car-nissan7.jpeg";
+import carNissan8 from "@/assets/car-nissan8.jpeg";
 import carNissan9 from "@/assets/car-nissan9.jpeg";
 import carPrado1 from "@/assets/car-prado1.jpeg";
 import carPrado2 from "@/assets/car-prado2.jpeg";
@@ -61,15 +67,9 @@ import carPrado10 from "@/assets/car-prado10.jpeg";
 import carPrado11 from "@/assets/car-prado11.jpeg";
 import carPrado12 from "@/assets/car-prado12.jpeg";
 
-
-
-
-
-
-/**
- * 👉 TO ADD MORE IMAGES TO A CAR:
- * Just add more images inside the `images` array
- */
+/* =======================
+   DATA (UNCHANGED)
+======================= */
 const cars = [
   {
     id: 1,
@@ -80,7 +80,15 @@ const cars = [
     mileage: 45230,
     category: "SOLD",
     price: 115000,
-    images: [carElantra, carElantra2, carElantra3, carElantra5, carElantra6, carElantra8, carElantra9],
+    images: [
+      carElantra,
+      carElantra2,
+      carElantra3,
+      carElantra5,
+      carElantra6,
+      carElantra8,
+      carElantra9,
+    ],
     specs: {
       fuel: "Petrol",
       power: "145 HP",
@@ -96,7 +104,19 @@ const cars = [
     mileage: 67890,
     category: "SUV",
     price: 175000,
-    images: [ carHighlander1, carHighlander2, carHighlander3, carHighlander4, carHighlander5, carHighlander6, carHighlander7, carHighlander8, carHighlander9, carHighlander10, carHighlander11],
+    images: [
+      carHighlander1,
+      carHighlander2,
+      carHighlander3,
+      carHighlander4,
+      carHighlander5,
+      carHighlander6,
+      carHighlander7,
+      carHighlander8,
+      carHighlander9,
+      carHighlander10,
+      carHighlander11,
+    ],
     specs: {
       fuel: "Petrol",
       power: "187 HP",
@@ -112,7 +132,16 @@ const cars = [
     mileage: 56789,
     category: "SUV",
     price: 230000,
-    images: [carCoupe, carFord1, carFord2, carFord3, carFord4, carFord5, carFord6, carFord7],
+    images: [
+      carCoupe,
+      carFord1,
+      carFord2,
+      carFord3,
+      carFord4,
+      carFord5,
+      carFord6,
+      carFord7,
+    ],
     specs: {
       fuel: "Petrol",
       power: "250 HP",
@@ -128,7 +157,18 @@ const cars = [
     mileage: 53000,
     category: "Saloon",
     price: 75000,
-    images: [carNissan, carNissan1, carNissan2, carNissan3, carNissan4, carNissan5, carNissan6, carNissan7, carNissan8, carNissan9],
+    images: [
+      carNissan,
+      carNissan1,
+      carNissan2,
+      carNissan3,
+      carNissan4,
+      carNissan5,
+      carNissan6,
+      carNissan7,
+      carNissan8,
+      carNissan9,
+    ],
     specs: {
       fuel: "Petrol",
       power: "181 HP",
@@ -144,7 +184,21 @@ const cars = [
     mileage: 120000,
     category: "SUV",
     price: 261000,
-    images: [carPrado, carPrado1, carPrado2, carPrado3, carPrado4, carPrado5, carPrado6, carPrado7, carPrado8, carPrado9, carPrado10, carPrado11, carPrado12],
+    images: [
+      carPrado,
+      carPrado1,
+      carPrado2,
+      carPrado3,
+      carPrado4,
+      carPrado5,
+      carPrado6,
+      carPrado7,
+      carPrado8,
+      carPrado9,
+      carPrado10,
+      carPrado11,
+      carPrado12,
+    ],
     specs: {
       fuel: "Petrol",
       power: "185 HP",
@@ -155,143 +209,137 @@ const cars = [
 
 const PHONE_NUMBER = "+233277184474";
 
+/* =======================
+   INVENTORY SECTION
+======================= */
 const InventorySection = () => {
-  // 🔹 Track current image index per car
   const [activeImage, setActiveImage] = useState<Record<number, number>>({});
 
-  const nextImage = (carId: number, length: number) => {
+  const nextImage = (id: number, length: number) => {
     setActiveImage((prev) => ({
       ...prev,
-      [carId]: ((prev[carId] ?? 0) + 1) % length,
+      [id]: ((prev[id] ?? 0) + 1) % length,
     }));
   };
 
-  const prevImage = (carId: number, length: number) => {
+  const prevImage = (id: number, length: number) => {
     setActiveImage((prev) => ({
       ...prev,
-      [carId]:
-        ((prev[carId] ?? 0) - 1 + length) % length,
+      [id]: ((prev[id] ?? 0) - 1 + length) % length,
     }));
+  };
+
+  const shareCar = (id: number) => {
+    const url = `${window.location.origin}/cars/${id}`;
+    if (navigator.share) {
+      navigator.share({ url });
+    } else {
+      navigator.clipboard.writeText(url);
+      alert("Car link copied!");
+    }
   };
 
   return (
-    <section id="inventory" className="py-24 bg-gradient-dark">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-gradient-dark">
+      <div className="container mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {cars.map((car) => {
+          const index = activeImage[car.id] ?? 0;
 
-        {/* Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-gold/10 border border-gold/30 rounded-full text-gold text-sm font-medium mb-4">
-            Available Cars
-          </span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
-            Exceptional <span className="text-gradient-gold">Vehicles</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Browse our handpicked selection of premium automobiles.
-          </p>
-        </div>
-
-        {/* Car Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {cars.map((car) => {
-            const currentIndex = activeImage[car.id] ?? 0;
-
-            return (
-              <div
-                key={car.id}
-                className="bg-gradient-card rounded-2xl overflow-hidden border border-border hover:border-gold/50 transition shadow-card"
-              >
-                {/* Image Carousel */}
-                <div className="relative h-56 overflow-hidden">
+          return (
+            <div
+              key={car.id}
+              className="bg-gradient-card rounded-2xl overflow-hidden border border-border"
+            >
+              {/* IMAGE */}
+              <div className="relative h-56 bg-black">
+                <Link to={`/cars/${car.id}`}>
                   <img
-                    src={car.images[currentIndex]}
+                    src={car.images[index]}
                     alt={car.name}
-                    className="w-full h-full object-cover transition duration-700"
+                    className="w-full h-full object-cover cursor-pointer"
                   />
+                </Link>
 
-                  {/* Category */}
-                  <div className="absolute top-4 left-4 px-3 py-1 bg-gold/90 text-primary-foreground text-xs font-semibold rounded-full">
-                    {car.category}
-                  </div>
+                {car.images.length > 1 && (
+                  <>
+                    <button
+                      onClick={() =>
+                        prevImage(car.id, car.images.length)
+                      }
+                      className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 p-2 rounded-full"
+                    >
+                      <ChevronLeft />
+                    </button>
 
-                  {/* Carousel Controls */}
-                  {car.images.length > 1 && (
-                    <>
-                      <button
-                        onClick={() => prevImage(car.id, car.images.length)}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70"
-                      >
-                        <ChevronLeft size={18} />
-                      </button>
+                    <button
+                      onClick={() =>
+                        nextImage(car.id, car.images.length)
+                      }
+                      className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 p-2 rounded-full"
+                    >
+                      <ChevronRight />
+                    </button>
+                  </>
+                )}
+              </div>
 
-                      <button
-                        onClick={() => nextImage(car.id, car.images.length)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70"
-                      >
-                        <ChevronRight size={18} />
-                      </button>
-                    </>
-                  )}
+              {/* CONTENT */}
+              <div className="p-6">
+                <h3 className="text-xl font-bold">{car.name}</h3>
+
+                <div className="grid grid-cols-3 gap-4 py-4">
+                  <Spec icon={<Fuel />} label={car.specs.fuel} />
+                  <Spec icon={<Gauge />} label={car.specs.power} />
+                  <Spec icon={<Settings2 />} label={car.specs.transmission} />
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
-                  <div className="text-sm text-muted-foreground mb-1">
-                    {car.year} • {car.make} • {car.model}
-                  </div>
+                <p className="text-2xl font-bold text-gradient-gold">
+                  ₵{car.price.toLocaleString()}
+                </p>
 
-                  <h3 className="text-xl font-display font-bold mb-2">
-                    {car.name}
-                  </h3>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <a href={`tel:${PHONE_NUMBER}`}>
+                    <Button size="sm">Call</Button>
+                  </a>
 
-                  <div className="text-sm text-muted-foreground mb-4">
-                    {car.mileage.toLocaleString()} miles
-                  </div>
+                  <a
+                    href={`https://wa.me/${PHONE_NUMBER.replace("+", "")}`}
+                    target="_blank"
+                  >
+                    <Button size="sm" variant="outline">
+                      <MessageCircle size={16} />
+                      WhatsApp
+                    </Button>
+                  </a>
 
-                  {/* Specs */}
-                  <div className="grid grid-cols-3 gap-4 py-4 border-y border-border mb-4">
-                    <Spec icon={<Fuel />} label={car.specs.fuel} />
-                    <Spec icon={<Gauge />} label={car.specs.power} />
-                    <Spec icon={<Settings2 />} label={car.specs.transmission} />
-                  </div>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => shareCar(car.id)}
+                  >
+                    <Share2 size={16} />
+                    Share
+                  </Button>
 
-                  {/* Price */}
-                  <div className="flex justify-between items-center">
-                    <span className="text-2xl font-bold text-gradient-gold">
-                      ₵{car.price.toLocaleString()}
-                    </span>
-
-                    <a href={`tel:${PHONE_NUMBER}`}>
-                      <Button variant="premium" size="sm">
-                        Call Now
-                        <ArrowRight className="h-4 w-4 ml-1" />
-                      </Button>
-                    </a>
-                  </div>
+                  <Link to={`/cars/${car.id}`}>
+                    <Button size="sm" variant="secondary">
+                      View Details
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
-            );
-          })}
-        </div>
-
-        {/* Global CTA */}
-        <div className="text-center mt-12">
-          <a href={`tel:${PHONE_NUMBER}`}>
-            <Button variant="heroOutline" size="lg">
-              Call Us Now
-              <ArrowRight className="h-5 w-5 ml-2" />
-            </Button>
-          </a>
-        </div>
-
+            </div>
+          );
+        })}
       </div>
     </section>
   );
 };
 
-/* 🔹 Small reusable spec component */
+/* SPEC COMPONENT */
 const Spec = ({ icon, label }: { icon: JSX.Element; label: string }) => (
-  <div className="flex flex-col items-center text-center text-xs text-muted-foreground">
+  <div className="flex flex-col items-center text-xs text-muted-foreground">
     <span className="text-gold mb-1">{icon}</span>
     {label}
   </div>
