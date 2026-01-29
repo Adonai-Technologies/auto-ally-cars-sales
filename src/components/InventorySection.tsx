@@ -66,6 +66,21 @@ import carPrado9 from "@/assets/car-prado9.jpeg";
 import carPrado10 from "@/assets/car-prado10.jpeg";
 import carPrado11 from "@/assets/car-prado11.jpeg";
 import carPrado12 from "@/assets/car-prado12.jpeg";
+import carAccord from "@/assets/car-accord1.jpeg";
+import carAccord2 from "@/assets/car-accord2.jpeg";
+import carAccord3 from "@/assets/car-accord3.jpeg";
+import carAccord4 from "@/assets/car-accord4.jpeg";
+import carAccord5 from "@/assets/car-accord5.jpeg";
+import carAccord6 from "@/assets/car-accord6.jpeg";
+import carAccord7 from "@/assets/car-accord7.jpeg";
+import carAccord8 from "@/assets/car-accord8.jpeg";
+import carGMC1 from "@/assets/car-GMC1.jpeg";
+import carGMC2 from "@/assets/car-GMC2.jpeg";
+import carGMC3 from "@/assets/car-GMC3.jpeg";
+import carGMC4 from "@/assets/car-GMC4.jpeg";
+import carGMC5 from "@/assets/car-GMC5.jpeg";
+
+
 
 /* =======================
    DATA (UNCHANGED)
@@ -204,6 +219,53 @@ const cars = [
       power: "185 HP",
       transmission: "CVT Auto",
     },
+  },
+  {
+    id: 6,
+    name: "Honda Accord",
+    make: "Honda",
+    model: "SE",
+    year: 2020,
+    mileage: 45000,
+    category: "Saloon",
+    price: 67000,
+    images: [
+      carAccord,
+      carAccord2,
+      carAccord3,
+      carAccord4,
+      carAccord5,
+      carAccord6,
+      carAccord7,
+      carAccord8,
+    ],
+    specs: {
+      fuel: "Petrol",
+      power: "185 HP",
+      transmission: "Manual 6-Speed transmission",
+    }
+  },
+  {
+    id: 7,
+    name: "GMC",
+    make: "GMC",
+    model: "SLT",
+    year: 2018,
+    mileage: 100000 ,
+    category: "SUV",
+    price: 170000,
+    images: [
+      carGMC1,
+      carGMC2,
+      carGMC3,
+      carGMC4,
+      carGMC5,
+    ],
+    specs: {
+      fuel: "Petrol",
+      power: "180 HP",
+      transmission: "6-Speed Automatic",
+    }
   },
 ];
 

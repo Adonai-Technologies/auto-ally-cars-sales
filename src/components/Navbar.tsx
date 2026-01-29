@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
-
-
-
+import logoImage from "@/assets/logo1.jpeg"; // <-- replace with your actual logo path
 
 const PHONE_NUMBER = "+233277184474";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -13,7 +12,6 @@ const Navbar = () => {
     { name: "Home", href: "#home" },
     { name: "Available Cars", href: "#inventory" },
     { name: "Services", href: "#services" },
-    // { name: "", href: "#about" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -23,12 +21,19 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2">
-            <span className="text-2xl font-display font-bold text-gradient-gold">
-              BuyMyGhCar
-            </span>
-            <span className="text-2xl font-display font-light text-foreground">
-              .com
-            </span>
+            {/* <img
+              src={logoImage}
+              alt="BuyMyGhCar Logo"
+              className="h-10 w-10 md:h-12 md:w-12 object-contain"
+            /> */}
+            <div className="flex gap-1 items-end">
+              <span className="text-2xl md:text-3xl font-display font-bold text-gradient-gold">
+                BuyMyGhCar
+              </span>
+              <span className="text-2xl md:text-3xl font-display font-light text-foreground">
+                .com
+              </span>
+            </div>
           </a>
 
           {/* Desktop Navigation */}
@@ -44,16 +49,19 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="tel:+1234567890" className="flex items-center gap-2 text-muted-foreground hover:text-gold transition-colors">
+            <a
+              href={`tel:${PHONE_NUMBER}`}
+              className="flex items-center gap-2 text-muted-foreground hover:text-gold transition-colors"
+            >
               <Phone className="h-4 w-4" />
-              <span className="font-medium">(+233) 027 718-4474</span>
+              <span className="font-medium">{PHONE_NUMBER}</span>
             </a>
             <a href={`tel:${PHONE_NUMBER}`}>
-            <Button variant="hero" size="lg">
-              Book Test Drive
-            </Button>
+              <Button variant="hero" size="lg">
+                Book Test Drive
+              </Button>
             </a>
           </div>
 
@@ -79,9 +87,11 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
-            <Button variant="hero" className="w-full mt-4">
-              Book Test Drive
-            </Button>
+            <a href={`tel:${PHONE_NUMBER}`}>
+              <Button variant="hero" className="w-full mt-4">
+                Book Test Drive
+              </Button>
+            </a>
           </div>
         )}
       </div>
