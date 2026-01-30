@@ -208,14 +208,14 @@ export const cars = [
   },
   {
     id: 6,
-    name: "Honda Accord",
+    name: "Honda Civic",
     make: "Honda",
     model: "SE",
     year: 2008,
     Registered: 2020,
     mileage: 100000,
     category: "Saloon",
-    price: 67000,
+    price: 65000,
     images: [
       carAccord,
       carAccord2,
@@ -229,7 +229,7 @@ export const cars = [
     specs: {
       fuel: "Petrol",
       power: "185 HP",
-      transmission: "CVT Auto",
+      transmission: "Manual Transmission",
     },
   }, 
   {

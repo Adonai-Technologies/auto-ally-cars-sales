@@ -222,13 +222,13 @@ const cars = [
   },
   {
     id: 6,
-    name: "Honda Accord",
+    name: "Honda Civic",
     make: "Honda",
     model: "SE",
     year: 2020,
     mileage: 45000,
     category: "Saloon",
-    price: 67000,
+    price: 65000,
     images: [
       carAccord,
       carAccord2,
@@ -242,12 +242,12 @@ const cars = [
     specs: {
       fuel: "Petrol",
       power: "185 HP",
-      transmission: "Manual 6-Speed transmission",
+      transmission: "Manual Transmission",
     }
   },
   {
     id: 7,
-    name: "GMC",
+    name: "GMC Terrain",
     make: "GMC",
     model: "SLT",
     year: 2018,
