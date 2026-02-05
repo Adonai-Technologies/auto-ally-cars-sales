@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 
-const GOOGLE_MAPS_LINK = "https://maps.app.goo.gl/qZFj5xiJbBQ4nVHf9";
+const GOOGLE_MAPS_LINK = "https://maps.app.goo.gl/HkbRBG1MejwZczSu5?g_st=aw";
 const PHONE_NUMBER = "+233277184474";
 const EMAIL_ADDRESS = "workssuprememotor@gmail.com";
 
