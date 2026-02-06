@@ -79,6 +79,17 @@ import carGMC2 from "@/assets/car-GMC2.jpeg";
 import carGMC3 from "@/assets/car-GMC3.jpeg";
 import carGMC4 from "@/assets/car-GMC4.jpeg";
 import carGMC5 from "@/assets/car-GMC5.jpeg";
+import carPajero1 from "@/assets/car-pajero1.jpeg";
+import carPajero2 from "@/assets/car-pajero2.jpeg";
+import carPajero3 from "@/assets/car-pajero3.jpeg";
+import carPajero4 from "@/assets/car-pajero4.jpeg";
+import carPajero5 from "@/assets/car-pajero5.jpeg";
+import carPajero6 from "@/assets/car-pajero6.jpeg";
+import carPajero7 from "@/assets/car-pajero7.jpeg";
+import carPajero8 from "@/assets/car-pajero8.jpeg";
+import carPajero9 from "@/assets/car-pajero9.jpeg";
+
+
 
 
 
@@ -267,6 +278,33 @@ const cars = [
       transmission: "6-Speed Automatic",
     }
   },
+  {
+    id: 8,
+    name: "Mitsubishi Pajero",
+    make: "Mitsubishi",
+    model: "4WD",
+    year: 2015,
+    mileage: 120000,
+    category: "SUV",
+    price: 220000,
+    images: [
+      carPajero1,
+      carPajero2,
+      carPajero3,
+      carPajero4,
+      carPajero5,
+      carPajero6,
+      carPajero7,
+      carPajero8,
+      carPajero9,
+    ],
+    specs: {
+      fuel: "Diesel",
+      power: "180 HP",
+      transmission: "6-Speed Automatic",
+    }
+  },
+  
 ];
 
 const PHONE_NUMBER = "+233277184474";
